@@ -1,0 +1,9 @@
+helo world
+<ul>
+{% for item in fotos %}
+ <li>
+     {{ item.create_on }}
+     <img width="200px" src="{{ item.foto.url }}">
+</li>
+{% endfor %}
+</ul>

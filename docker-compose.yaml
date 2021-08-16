@@ -1,0 +1,38 @@
+version: '3.1'
+
+services:
+
+  db:
+    image: postgres:13.3-alpine3.14
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: facil
+      POSTGRES_DB: empresas
+
+  pgadmin4:
+    image: dpage/pgadmin4
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@geomk.com.br
+      PGADMIN_DEFAULT_PASSWORD: facil
+    ports:
+      - 8082:80
+
+
+  # crawler:
+  #   build: .
+  #   volumes: 
+  #     - ./pizza:/app
+  #   depends_on:
+  #     - db
+  
+  blog:
+    build: ./blog
+    volumes: 
+      - ./blog:/app
+    ports:
+      - 9999:8000
+
+
+
+ 
